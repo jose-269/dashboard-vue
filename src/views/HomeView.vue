@@ -7,7 +7,7 @@
         <img src="@/assets/user-logo-table.webp" class="user-logo mb-5" alt="user">
 
       </div>
-      <ul class="list-links">
+      <ul v-if="users.length > 0" class="list-links">
         <li class="mb-4 text-white">
           <div class="link-selected pl-3 d-flex align-items-center py-3">
             

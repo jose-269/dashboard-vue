@@ -69,6 +69,7 @@ export default {
           {
             name: 'All',
             posts: this.allPosts,
+
           },
         ];
       }
@@ -79,8 +80,9 @@ export default {
     ...mapMutations(['setUserPost']),
     setPieChart() {
         this.chart = am4core.create(this.$refs.donutChart, am4charts.PieChart);
-        this.chart.innerRadius = am4core.percent(40);
-  
+        this.chart.innerRadius = am4core.percent(36);
+        this.chart.radius = am4core.percent(90);
+        
         let series = this.chart.series.push(new am4charts.PieSeries());
         
         series.dataFields.value = "posts";
@@ -89,22 +91,46 @@ export default {
         series.labels.template.disabled = true; 
         series.ticks.template.disabled = true; 
         let label = series.createChild(am4core.Label);
-        label.text = "{value.percent.formatNumber('#.#')}%";
-        label.fontSize = 14;
+        label.text = `{value} ${this.userPostLength}`;
+        label.fontSize = 24;
+        label.fontWeight = 700;
+        label.paddingBottom = 20
+        label.paddingTop = 4;
         label.horizontalCenter = "middle";
         label.verticalCenter = "middle";
+        label.fill = am4core.color('#33535F');
+        label.rotation = -100
+        let postLabel = series.createChild(am4core.Label);
+        postLabel.text = "Posts";
+        postLabel.fontSize = 14;
+        postLabel.fontWeight = 700;
+        postLabel.fill = am4core.color("#33535F");
+        postLabel.verticalCenter = "top"; 
+        postLabel.horizontalCenter = "middle";
+        postLabel.rotation = -100;
+        postLabel.paddingTop = 4;
+
         series.slices.template.states.getKey("hover").properties.shiftRadius = 0.1;
+        series.slices.template.propertyFields.fill = "color"
+        series.slices.template.stroke = am4core.color("#fff");
+        series.slices.template.strokeWidth = 4;
+
   
       this.chart.data = [
         {
           "name": this.userFilter,
-          "posts": this.userPostLength
+          "posts": this.userPostLength,
+          "color": am4core.color("#6B7A7F")
+
         },
         {
           "name": "All",
-          "posts": this.allPosts
+          "posts": this.allPosts,
+          "color": am4core.color("#379ABA")
+
         }
       ];
+      series.rotation = 100;
     }
   },
   mounted() {
@@ -136,8 +162,8 @@ export default {
 
 <style lang="scss" scoped>
 .chart {
-  width: 200px;
-  height: 200px !important;
+  width: 240px;
+  height: 240px !important;
 }
 .donut-title {
   font-size: 16px;
