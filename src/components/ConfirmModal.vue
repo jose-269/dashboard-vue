@@ -7,7 +7,7 @@
 				<div class="modal-body text-center">
 					<img src="@/assets/ticket.webp" class="info-logo my-5" alt="info logo">
 
-					<h3 class="modal-title mb-5">Guardado exitosamente</h3>
+					<h3 class="modal-title mb-5">{{ msg }} exitosamente</h3>
 					<button type="button" class="btn custom-btn"  @click="closeModal">Guardar</button>
 				</div>
 			</div>
@@ -41,6 +41,12 @@ export default {
 		closeModal() {
 			this.setConfirm(false)
 			this.confirmModal.hide()
+		},
+	},
+	props: {
+		msg: {
+			type: String,
+			default: ''
 		},
 	},
 };

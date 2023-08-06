@@ -6,7 +6,8 @@ export default createStore({
     details: [],
     modalId: null,
     usersPost: {},
-    confirm: false
+    confirm: false,
+    cofirmMessage: ''
   },
   getters: {
     userLengthPosts (state)  {
@@ -15,6 +16,10 @@ export default createStore({
   },
 
   mutations: {
+    setConfirmMessage(state, msg) {
+      if (!msg) return;
+      state.cofirmMessage = msg
+    },
     setConfirm(state, confirm) {
       state.confirm = confirm
     },

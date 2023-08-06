@@ -34,7 +34,7 @@
 				</tr>
 			</tbody>
 		</table>
-		<ConfirmModal :confirmed="Guardado" />
+		<ConfirmModal :msg="cofirmMessage" />
  
 	</div>
 		
@@ -45,10 +45,16 @@
 import DetailModal from '@/components/DetailModal.vue';
 import isRemoveModal from '@/components/isRemoveModal.vue'
 import { mapMutations } from 'vuex';
-import ConfirmModal from '@/components/ConfirmModal.vue'
+import ConfirmModal from '@/components/ConfirmModal.vue';
+import { mapState } from 'vuex';
 
 export default {
-  name: 'Table',
+	name: 'Table',
+	data() {
+		return {
+			message: ''
+		}
+	},
 	components: {
 		DetailModal,
 		isRemoveModal,
@@ -58,9 +64,13 @@ export default {
 		...mapMutations(["setID", "removeUser"]),
     sendId(id) {
 			this.setID(id)
-    },
+		},
 		
-  },
+		
+	},
+	computed: {
+		...mapState(['cofirmMessage'])
+	},
   props: {
     users: {
         type: Array,

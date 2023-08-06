@@ -142,7 +142,7 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(["AddUser", "setConfirm"]),
+    ...mapMutations(["AddUser", "setConfirm", "setConfirmMessage"]),
     sendNewUser() {
       if (
         !this.newUser.fullName ||
@@ -154,8 +154,9 @@ export default {
       ) return;
 
         // this.isDisabled = true;
-    this.setConfirm(true);
+      this.setConfirm(true);
       this.AddUser(this.newUser);
+      this.setConfirmMessage('Guardado');
 
       this.newUser.fullName = "";
       this.newUser.userName = "";
