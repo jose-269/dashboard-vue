@@ -34,7 +34,7 @@
         <Table  :users="users" />
       </div>
     </div>
-    <div v-else class="spinner-border text-light my-spinner" role="status">
+    <div v-else class="spinner-grow text-light text-light my-spinner" role="status">
       <span class="visually-hidden">Loading...</span>
     </div>
   </div>
