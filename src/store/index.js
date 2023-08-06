@@ -5,7 +5,8 @@ export default createStore({
     users: [],
     details: [],
     modalId: null,
-    usersPost: {}
+    usersPost: {},
+    confirm: false
   },
   getters: {
     userLengthPosts (state)  {
@@ -14,6 +15,9 @@ export default createStore({
   },
 
   mutations: {
+    setConfirm(state, confirm) {
+      state.confirm = confirm
+    },
     setUsers(state, payload) {
       if(!payload) return;
       state.users = payload

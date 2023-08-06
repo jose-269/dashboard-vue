@@ -1,6 +1,6 @@
 <template>
 	<div class="result-table">
-		<table class="table table-striped user-table" >
+		<table class="table table-striped user-table " >
 				<thead class="table__head">
 					<tr>
 						<th scope="col">ID</th>
@@ -12,9 +12,9 @@
 						<th scope="col">Acciones</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody class="t-body">
 					<tr v-for="user in users" :key="user.id">
-						<th scope="row">{{ user.id }}</th>
+						<td>{{ user.id }}</td>
 							<td>{{ user.name }}</td>
 							<td>{{ user.username }}</td>
 							<td>{{ user.email }}</td>
@@ -31,11 +31,11 @@
 					<!-- MODALS -->
 					<DetailModal :id="user.id" />
 					<isRemoveModal :id="user.id" />
-					<ConfirmModal />
-					</tr>
-				</tbody>
+				</tr>
+			</tbody>
 		</table>
-
+		<ConfirmModal :confirmed="Guardado" />
+ 
 	</div>
 		
 
@@ -78,7 +78,9 @@ export default {
   width: 100%;
 }
 .result-table {
-	// border: 1px solid grey;
+	border-radius: 25px!important;
+	border: 1px solid #000;
+	overflow: hidden;
 }
 .table-wrapper {
   background-color: #fff;
@@ -90,7 +92,22 @@ export default {
   &__head {
     background-color: #366796;
     color: #fff;
+		height: 80px;
   }
+}
+.t-body {
+	border-top: none!important;
+}
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: #F2F6FB;
+}
+td, th {
+	text-align: center;
+}
+td {
+	height: 48;
+	vertical-align: middle;
+	border-bottom: none;
 }
 .actions-img {
   width: 20px;

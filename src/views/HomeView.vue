@@ -22,7 +22,13 @@
         </li>
       </ul>
     </div>
-    <div v-if="users.length > 0"  class="table-content px-4">
+    <div v-if="users.length > 0"  class="table-content px-5">
+
+      <div class="nav-links-section">
+        <a href="#" class="nav-links-section__nav-links"><i class="fa-solid fa-house "></i> Inicio</a> / 
+        <a href="#" class="nav-links-section__nav-links fw-bold">Usuarios</a>
+      </div>
+
       <AddUserBtn />
       <div class="table-wrapper">
         <Table  :users="users" />
@@ -69,9 +75,22 @@ export default {
 .link-selected {
   border-radius: 23px 0 0 23px;
 }
+.nav-links-section {
+  padding: 50px 0 4px;
+  border-bottom: 1px solid var(--first-grey);
+  margin-bottom: 30px;
+  &__nav-links {
+    color: var(--dark-blue);
+    text-decoration: none;
+  }
+}
+.nav-links-section__nav-links:hover {
+  color: var(--second-blue);
+}
 .main-layout {
   background: linear-gradient( #366796, #38C6D9);
-  height: 125vh;
+  min-height: 110vh;
+  height: 100%;
   width: 100%;
 }
 .grid-container {
@@ -79,6 +98,7 @@ export default {
   grid-template-columns: 233px 1fr ; 
   grid-template-rows: 50px 1fr ; 
   // width: 100%;
+  height: 100%;
 }
 .user-logo {
   width: 102.93px;
@@ -101,8 +121,10 @@ export default {
   grid-column: 2/3;
   grid-row: 2/3;
   background-color: #fff;
-  border-radius: 50px 0 0 50px;
+  border-radius: 50px 0 0 0px;
   padding-bottom: 50px;
+  height: 100%;
+    min-height: 110vh;
 }
 .text-selected {
   color: var(--second-blue);
