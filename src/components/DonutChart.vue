@@ -1,14 +1,14 @@
 <template>
   <div class="row" v-if="isDataLoaded">
-    <div class="col-md-6">
+    <div class="col-md-6 my-5">
       <div class="chart" ref="donutChart" style="height: 400px;"  v-if="isDataLoaded"></div>
     </div>
-    <div class="col-md-6">
-      <h4>Titulo </h4>
-      <p>{{ userPost?.title }}</p>
+    <div class="col-md-6 my-5">
+      <h4 class="donut-title">Titulo </h4>
+      <p class="user-text">{{ userPost?.title }}</p>
 
-      <h4>Descripción </h4>
-      <p>{{ userPost?.body }}</p>
+      <h4 class="donut-title">Descripción </h4>
+      <p class="user-text">{{ userPost?.body }}</p>
 
     </div>
   </div>
@@ -138,5 +138,14 @@ export default {
 .chart {
   width: 200px;
   height: 200px !important;
+}
+.donut-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--dark-blue);
+}
+.user-text {
+  font-size: 14px;
+  color: var(--dark-grey);
 }
 </style>
