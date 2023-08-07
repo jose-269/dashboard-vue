@@ -1,43 +1,43 @@
 <template>
   <div class="main-layout">
     
-  <div class="grid-container">
-    <div class="sidebar">
-      <div class="d-flex justify-content-center">
-        <img src="@/assets/user-logo-table.webp" class="user-logo mb-5" alt="user">
+    <div class="grid-container">
+      <div class="sidebar mt-2">
+        <div class="d-flex justify-content-center">
+          <img src="@/assets/user-logo-table.webp" class="user-logo mb-5" alt="user">
 
+        </div>
+        <ul v-if="users.length > 0" class="list-links">
+          <li class="mb-4 text-white">
+            <div class="link-selected pl-3 d-flex align-items-center py-3">
+              
+              <i class="fa-solid fa-house ps-3 me-2"></i> <b>Inicio</b>
+            </div>
+          </li>
+          <li class="mb-4 text-selected">
+            <div class="link-selected bg-white pl-3 d-flex align-items-center py-3">
+
+              <i class="fa-solid fa-users ps-3 text-selected me-2"></i><b>Ususarios</b>
+            </div>
+          </li>
+        </ul>
       </div>
-      <ul v-if="users.length > 0" class="list-links">
-        <li class="mb-4 text-white">
-          <div class="link-selected pl-3 d-flex align-items-center py-3">
-            
-            <i class="fa-solid fa-house ps-3 me-2"></i> <b>Inicio</b>
-          </div>
-        </li>
-        <li class="mb-4 text-selected">
-          <div class="link-selected bg-white pl-3 d-flex align-items-center py-3">
+      <div v-if="users.length > 0"  class="table-content px-5">
 
-            <i class="fa-solid fa-users ps-3 text-selected me-2"></i><b>Ususarios</b>
-          </div>
-        </li>
-      </ul>
-    </div>
-    <div v-if="users.length > 0"  class="table-content px-5">
+        <div class="nav-links-section">
+          <a href="#" class="nav-links-section__nav-links"><i class="fa-solid fa-house "></i> Inicio</a> / 
+          <a href="#" class="nav-links-section__nav-links fw-bold">Usuarios</a>
+        </div>
 
-      <div class="nav-links-section">
-        <a href="#" class="nav-links-section__nav-links"><i class="fa-solid fa-house "></i> Inicio</a> / 
-        <a href="#" class="nav-links-section__nav-links fw-bold">Usuarios</a>
+        <AddUserBtn />
+        <div class="table-wrapper">
+          <Table  :users="users" />
+        </div>
       </div>
-
-      <AddUserBtn />
-      <div class="table-wrapper">
-        <Table  :users="users" />
+      <div v-else class="spinner-grow text-light text-light my-spinner" role="status">
+        <span class="visually-hidden">Loading...</span>
       </div>
     </div>
-    <div v-else class="spinner-grow text-light text-light my-spinner" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
-  </div>
   </div>
 </template>
 
